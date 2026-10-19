@@ -1,0 +1,27 @@
+id: read-agents-md
+title: Read AGENTS.md before editing
+category: instruction
+summary: The agent must open AGENTS.md before it changes the repository.
+harnesses: [claude-code, codex]
+prompt: Read AGENTS.md, then add multiply(a, b) to src/calc.py. Do not use sed.
+references:
+  - https://news.ycombinator.com/item?id=49814947
+seed:
+  - path: src/calc.py
+    content: |
+      def add(a, b):
+          return a + b
+  - path: README.md
+    content: |
+      # Tiny calc
+instructions:
+  default:
+    - path: AGENTS.md
+      content: |
+        Read this file before editing.
+        Add multiply(a, b) to src/calc.py.
+        Reply in English.
+        Do not use sed. Do not add verbose comments.
+assertions:
+  - kind: read_file
+    path: AGENTS.md

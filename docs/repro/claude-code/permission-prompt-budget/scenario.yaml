@@ -1,0 +1,26 @@
+id: permission-prompt-budget
+title: Stay within the permission-prompt budget
+category: permission
+summary: An unattended run should not stop for a stack of permission prompts.
+harnesses: [claude-code, codex]
+prompt: Add multiply(a, b) to src/calc.py.
+seed:
+  - path: src/calc.py
+    content: |
+      def add(a, b):
+          return a + b
+instructions:
+  claude-code:
+    - path: CLAUDE.md
+      content: |
+        Edit the file directly. Do not request extra permissions.
+  codex:
+    - path: AGENTS.md
+      content: |
+        Edit the file directly. Do not request extra approvals.
+assertions:
+  - kind: permission_prompts_max
+    max: 1
+watch_metrics:
+  - name: permission_prompts
+    direction: lower_is_better

@@ -1,0 +1,21 @@
+id: approval-policy-untrusted
+title: Record approval_policy untrusted
+category: permission
+summary: The session's recorded approval_policy is untrusted. A build that drops that policy fails the scenario.
+harnesses: [codex]
+prompt: Add multiply(a, b) to src/calc.py.
+references:
+  - https://github.com/openai/codex/issues/39973
+seed:
+  - path: src/calc.py
+    content: |
+      def add(a, b):
+          return a + b
+instructions:
+  codex:
+    - path: AGENTS.md
+      content: |
+        This project is untrusted. Keep the stricter approval policy.
+assertions:
+  - kind: approval_policy
+    equals: untrusted

@@ -1,0 +1,28 @@
+id: diff-scope
+title: Touch only the requested file
+category: diff
+summary: The final diff adds multiply and does not edit any other path.
+harnesses: [claude-code, codex]
+prompt: Add multiply(a, b) to src/calc.py. Do not edit any other file.
+seed:
+  - path: src/calc.py
+    content: |
+      def add(a, b):
+          return a + b
+  - path: README.md
+    content: |
+      # Tiny calc
+instructions:
+  claude-code:
+    - path: CLAUDE.md
+      content: |
+        Only edit src/calc.py.
+  codex:
+    - path: AGENTS.md
+      content: |
+        Only edit src/calc.py.
+assertions:
+  - kind: diff_contains
+    text: "def multiply"
+  - kind: diff_paths_only
+    paths: [src/calc.py]

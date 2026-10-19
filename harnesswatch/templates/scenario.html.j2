@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ scenario.title }} — HarnessWatch</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="mast">
+    <div>
+      <p class="station"><a class="back" href="../index.html">← Bulletin</a></p>
+      <h1>{{ scenario.title }}</h1>
+    </div>
+    <p class="dek">{{ scenario.summary }}</p>
+  </header>
+  <main class="wrap">
+    <p><span class="mono">{{ scenario.category }}</span> · prompt: {{ scenario.prompt }}</p>
+    {% if scenario.references %}
+    <p>Public reports this scenario is shaped after:
+      {% for url in scenario.references %}<a href="{{ url }}">{{ url }}</a>{% if not loop.last %} · {% endif %}{% endfor %}
+    </p>
+    {% endif %}
+    {% for pair in pairs %}
+    <section id="{{ pair.comparison.harness }}">
+      <h2>{{ pair.harness_label }}</h2>
+      <p>
+        {{ pair.comparison.baseline_version }} {{ pair.comparison.baseline_passes }}/{{ pair.comparison.baseline_n }}
+        → {{ pair.comparison.candidate_version }} {{ pair.comparison.candidate_passes }}/{{ pair.comparison.candidate_n }}
+        · Fisher one-sided p={{ "%.4g"|format(pair.comparison.fisher_p) }}
+        {% if pair.comparison.alert %}· <strong>storm</strong>{% else %}· no significant regression{% endif %}
+      </p>
+      {% if pair.comparison.reasons %}
+      <ul>
+        {% for reason in pair.comparison.reasons %}<li>{{ reason }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      <div class="pair">
+        <article class="pane">
+          <h3>Baseline · run {{ "%02d"|format(pair.baseline_index) }}</h3>
+          <p class="mono">pass={{ pair.baseline_passed }}</p>
+          <ol class="steps">
+            {% for step in pair.baseline_steps %}
+            <li><strong>{{ step.name }}</strong> {% if step.detail %}<span class="mono">{{ step.detail }}</span>{% endif %}</li>
+            {% else %}
+            <li>(no tool calls)</li>
+            {% endfor %}
+          </ol>
+          <div class="reply">{{ pair.baseline_reply }}</div>
+        </article>
+        <article class="pane {% if pair.comparison.alert %}storm{% endif %}">
+          <h3>Candidate · run {{ "%02d"|format(pair.candidate_index) }}</h3>
+          <p class="mono">pass={{ pair.candidate_passed }}</p>
+          <ol class="steps">
+            {% for step in pair.candidate_steps %}
+            <li><strong>{{ step.name }}</strong> {% if step.detail %}<span class="mono">{{ step.detail }}</span>{% endif %}</li>
+            {% else %}
+            <li>(no tool calls)</li>
+            {% endfor %}
+          </ol>
+          <div class="reply">{{ pair.candidate_reply }}</div>
+        </article>
+      </div>
+      {% if pair.issue %}
+      <div class="actions">
+        <button type="button" data-for="draft-{{ pair.comparison.harness }}" onclick="copyDraft('draft-{{ pair.comparison.harness }}')">Copy issue draft</button>
+        <a href="{{ pair.repro_href }}">Open repro bundle</a>
+      </div>
+      <textarea class="draft" id="draft-{{ pair.comparison.harness }}" readonly>{{ pair.issue }}</textarea>
+      {% endif %}
+    </section>
+    {% endfor %}
+    <p class="tos">Side-by-side runs are the recorded fixtures for this scenario. Copying the draft does not file an issue.</p>
+  </main>
+  <script>
+    function copyDraft(id) {
+      var node = document.getElementById(id);
+      var text = node.value;
+      var button = document.querySelector('[data-for="' + id + '"]');
+      function done(label) {
+        if (button) button.textContent = label;
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done("Copied"); }, function () {
+          node.focus();
+          node.select();
+          done("Selected — press Ctrl+C");
+        });
+      } else {
+        node.focus();
+        node.select();
+        done("Selected — press Ctrl+C");
+      }
+    }
+  </script>
+</body>
+</html>

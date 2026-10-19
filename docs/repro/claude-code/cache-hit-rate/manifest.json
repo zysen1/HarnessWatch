@@ -1,0 +1,18 @@
+{
+  "harness": "claude-code",
+  "scenario": "cache-hit-rate",
+  "baseline_version": "2.1.70-fixture",
+  "candidate_version": "2.1.88-fixture",
+  "baseline_run": "run-00.jsonl",
+  "candidate_run": "run-00.jsonl",
+  "baseline_passes": 8,
+  "baseline_n": 8,
+  "candidate_passes": 0,
+  "candidate_n": 8,
+  "fisher_p_worse": 7.77000777000777e-05,
+  "reasons": [
+    "pass rate 8/8 \u2192 0/8 (Fisher one-sided p=7.77e-05)",
+    "cache_hit_rate mean 0.7437 \u2192 0.004521 (95% bootstrap CI -0.7403 to -0.738)"
+  ],
+  "note": "Generated from recorded fixtures. This draft describes the fixture pair, not a live vendor release, unless you produced the trajectories with harnesswatch run."
+}

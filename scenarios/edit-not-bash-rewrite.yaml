@@ -1,0 +1,27 @@
+id: edit-not-bash-rewrite
+title: Do not rewrite files from bash
+category: tool
+summary: File changes go through Edit or apply_patch. A bash heredoc or cat redirection is a failure.
+harnesses: [claude-code, codex]
+prompt: Add multiply(a, b) to src/calc.py using the file edit tool, not a shell redirection.
+references:
+  - https://github.com/anthropics/claude-code/issues/87971
+seed:
+  - path: src/calc.py
+    content: |
+      def add(a, b):
+          return a + b
+instructions:
+  claude-code:
+    - path: CLAUDE.md
+      content: |
+        Do not rewrite files with bash, cat, or a heredoc. Use Edit.
+  codex:
+    - path: AGENTS.md
+      content: |
+        Do not rewrite files with bash, cat, or a heredoc. Use apply_patch.
+assertions:
+  - kind: command_forbidden
+    pattern: '<<|cat\s*>|tee\s*>'
+  - kind: tool_any_of
+    names: [Edit, Write, ApplyPatch]

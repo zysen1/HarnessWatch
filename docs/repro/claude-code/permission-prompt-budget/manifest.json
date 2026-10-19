@@ -1,0 +1,18 @@
+{
+  "harness": "claude-code",
+  "scenario": "permission-prompt-budget",
+  "baseline_version": "2.1.70-fixture",
+  "candidate_version": "2.1.88-fixture",
+  "baseline_run": "run-00.jsonl",
+  "candidate_run": "run-00.jsonl",
+  "baseline_passes": 8,
+  "baseline_n": 8,
+  "candidate_passes": 1,
+  "candidate_n": 8,
+  "fisher_p_worse": 0.0006993006993006993,
+  "reasons": [
+    "pass rate 8/8 \u2192 1/8 (Fisher one-sided p=0.0006993)",
+    "permission_prompts mean 0 \u2192 3.5 (95% bootstrap CI 2.5 to 4)"
+  ],
+  "note": "Generated from recorded fixtures. This draft describes the fixture pair, not a live vendor release, unless you produced the trajectories with harnesswatch run."
+}

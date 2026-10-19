@@ -1,0 +1,289 @@
+:root {
+  --paper: #f4efe6;
+  --paper-2: #fffaf3;
+  --ink: #1c1612;
+  --muted: #5e564c;
+  --rule: #241c16;
+  --storm: #8f261c;
+  --storm-bg: #f4d2cb;
+  --watch: #8a5410;
+  --watch-bg: #f6e4c4;
+  --clear: #1c5b43;
+  --clear-bg: #d5ebe2;
+  --na: #8d867c;
+  --na-bg: #ece7de;
+  --water: #17364c;
+  --accent: #c4552a;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background:
+    radial-gradient(circle at 12% -10%, #f7e7d4 0, transparent 42%),
+    linear-gradient(180deg, #efe6d8 0%, var(--paper) 220px);
+  color: var(--ink);
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a { color: var(--water); }
+
+.mast {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+  padding: 28px 36px 18px;
+  border-bottom: 3px solid var(--rule);
+}
+
+.station {
+  font-family: "IBM Plex Mono", "ui-monospace", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 8px;
+}
+
+h1 {
+  font-size: 46px;
+  line-height: 0.95;
+  font-weight: 560;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.dek {
+  max-width: 460px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.wrap { padding: 22px 36px 64px; }
+
+.strip {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 12px;
+  margin: 18px 0 22px;
+}
+
+.stat, .note {
+  background: var(--paper-2);
+  border: 1px solid #ddd4c6;
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.stat b {
+  display: block;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+}
+
+.stat span, .note {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+
+.swatch.clear { background: var(--clear); }
+.swatch.watch { background: var(--watch); }
+.swatch.storm { background: var(--storm); }
+.swatch.na { background: var(--na); }
+
+.board {
+  overflow-x: auto;
+  border: 1px solid #ddd4c6;
+  border-radius: 16px;
+  background: var(--paper-2);
+}
+
+table {
+  border-collapse: collapse;
+  min-width: 1180px;
+  width: 100%;
+}
+
+th, td {
+  border-bottom: 1px solid #eadfce;
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+th {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+th.scenario { max-width: 88px; }
+
+td.version {
+  text-align: left;
+  min-width: 190px;
+  padding-left: 14px;
+}
+
+td.version strong { display: block; font-size: 15px; }
+td.version em {
+  font-style: normal;
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 64px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid transparent;
+}
+
+.cell b { font-size: 18px; letter-spacing: -0.03em; }
+.cell small {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cell.clear { background: var(--clear-bg); color: var(--clear); }
+.cell.watch { background: var(--watch-bg); color: var(--watch); }
+.cell.storm { background: var(--storm-bg); color: var(--storm); box-shadow: inset 3px 0 0 var(--storm); }
+.cell.na { background: var(--na-bg); color: var(--na); }
+
+.catalog {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.catalog a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--paper-2);
+  border-radius: 12px;
+  padding: 12px 14px;
+  border: 1px solid #e4d9c8;
+}
+
+.catalog .cat {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+footer, .tos {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 760px;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0 28px;
+}
+
+.pane {
+  background: var(--paper-2);
+  border-radius: 16px;
+  padding: 16px 18px 20px;
+  border: 1px solid #e4d9c8;
+}
+
+.pane.storm { border-color: #e3b2a8; }
+
+.pane h3 { margin: 0 0 4px; }
+
+ol.steps { margin: 12px 0; padding-left: 18px; }
+ol.steps li { margin: 6px 0; }
+code, .mono {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 13px;
+}
+
+.reply {
+  white-space: pre-wrap;
+  background: #f7f1e6;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.draft {
+  width: 100%;
+  min-height: 280px;
+  border-radius: 12px;
+  border: 1px solid #e4d9c8;
+  background: #1c1612;
+  color: #f4efe6;
+  padding: 14px;
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+button {
+  font: inherit;
+  background: var(--ink);
+  color: var(--paper);
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+button:hover { background: var(--accent); }
+
+.actions { display: flex; gap: 12px; align-items: center; margin: 8px 0 12px; }
+
+.back { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+@media (max-width: 800px) {
+  .mast, .wrap { padding-left: 16px; padding-right: 16px; }
+  .mast, .strip, .pair { display: block; }
+  h1 { font-size: 36px; }
+  .stat, .note, .pane { margin-bottom: 10px; }
+}

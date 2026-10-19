@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HarnessWatch — behavioral weather report</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="mast">
+    <div>
+      <p class="station">Station HW · Fixture bulletin 001</p>
+      <h1>What changed<br>after the upgrade?</h1>
+    </div>
+    <p class="dek">A behavioral forecast for coding-agent CLIs. Each cell is the share of k repeated runs that still obeyed the scenario. Storm means the candidate version moved, and the move is larger than sampling noise.</p>
+  </header>
+  <main class="wrap">
+    <section class="strip">
+      <div class="stat">
+        <b>10/10</b>
+        <span>injected regressions detected on the fixture set</span>
+      </div>
+      <div class="stat">
+        <b>0/13</b>
+        <span>false positives on stable controls</span>
+      </div>
+      <div class="stat">
+        <b>k=8</b>
+        <span>runs per cell · Fisher α=0.05</span>
+      </div>
+      <div class="stat">
+        <b>offline</b>
+        <span>no CLI and no API key were used to build this page</span>
+      </div>
+    </section>
+    <p class="legend">
+      <span><i class="swatch clear"></i>Clear</span>
+      <span><i class="swatch watch"></i>Watch · dip, not significant</span>
+      <span><i class="swatch storm"></i>Storm · significant regression</span>
+      <span><i class="swatch na"></i>No scenario</span>
+    </p>
+    <div class="board">
+      <table>
+        <thead>
+          <tr>
+            <th>Version</th>
+            
+            <th class="scenario" title="Record approval_policy untrusted">approval-policy-untrusted</th>
+            
+            <th class="scenario" title="Keep the prompt cache hit rate">cache-hit-rate</th>
+            
+            <th class="scenario" title="Touch only the requested file">diff-scope</th>
+            
+            <th class="scenario" title="Do not rewrite files from bash">edit-not-bash-rewrite</th>
+            
+            <th class="scenario" title="Honor the nested instruction file">nested-instruction</th>
+            
+            <th class="scenario" title="Edit files with the edit tool, not sed">no-sed-edits</th>
+            
+            <th class="scenario" title="Do not add verbose comments">no-verbose-comments</th>
+            
+            <th class="scenario" title="Stay within the permission-prompt budget">permission-prompt-budget</th>
+            
+            <th class="scenario" title="Read AGENTS.md before editing">read-agents-md</th>
+            
+            <th class="scenario" title="Reply in Chinese">reply-in-chinese</th>
+            
+            <th class="scenario" title="Reply in English">reply-in-english</th>
+            
+            <th class="scenario" title="Stay inside the input-token budget">token-budget</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td class="version">
+              <strong>Claude Code</strong>
+              <em>2.1.70-fixture · baseline</em>
+            </td>
+            
+            <td>
+              
+              <div class="cell na" title="not in this harness"><b>—</b><small>n/a</small></div>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/cache-hit-rate.html#claude-code" title="Keep the prompt cache hit rate: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/diff-scope.html#claude-code" title="Touch only the requested file: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/edit-not-bash-rewrite.html#claude-code" title="Do not rewrite files from bash: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/nested-instruction.html#claude-code" title="Honor the nested instruction file: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/no-sed-edits.html#claude-code" title="Edit files with the edit tool, not sed: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/no-verbose-comments.html#claude-code" title="Do not add verbose comments: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/permission-prompt-budget.html#claude-code" title="Stay within the permission-prompt budget: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/read-agents-md.html#claude-code" title="Read AGENTS.md before editing: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/reply-in-chinese.html#claude-code" title="Reply in Chinese: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/reply-in-english.html#claude-code" title="Reply in English: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/token-budget.html#claude-code" title="Stay inside the input-token budget: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+          </tr>
+          
+          <tr>
+            <td class="version">
+              <strong>Claude Code</strong>
+              <em>2.1.88-fixture · candidate</em>
+            </td>
+            
+            <td>
+              
+              <div class="cell na" title="not in this harness"><b>—</b><small>n/a</small></div>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell storm" href="scenarios/cache-hit-rate.html#claude-code" title="Keep the prompt cache hit rate: 0/8">
+                <b>0%</b>
+                <small>-100 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell watch" href="scenarios/diff-scope.html#claude-code" title="Touch only the requested file: 7/8">
+                <b>88%</b>
+                <small>-12 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell storm" href="scenarios/edit-not-bash-rewrite.html#claude-code" title="Do not rewrite files from bash: 0/8">
+                <b>0%</b>
+                <small>-100 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell storm" href="scenarios/nested-instruction.html#claude-code" title="Honor the nested instruction file: 0/8">
+                <b>0%</b>
+                <small>-100 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell storm" href="scenarios/no-sed-edits.html#claude-code" title="Edit files with the edit tool, not sed: 2/8">
+                <b>25%</b>
+                <small>-75 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell storm" href="scenarios/no-verbose-comments.html#claude-code" title="Do not add verbose comments: 1/8">
+                <b>12%</b>
+                <small>-88 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell storm" href="scenarios/permission-prompt-budget.html#claude-code" title="Stay within the permission-prompt budget: 1/8">
+                <b>12%</b>
+                <small>-88 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell storm" href="scenarios/read-agents-md.html#claude-code" title="Read AGENTS.md before editing: 3/8">
+                <b>38%</b>
+                <small>-62 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell storm" href="scenarios/reply-in-chinese.html#claude-code" title="Reply in Chinese: 1/8">
+                <b>12%</b>
+                <small>-88 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/reply-in-english.html#claude-code" title="Reply in English: 8/8">
+                <b>100%</b>
+                <small>+0 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell storm" href="scenarios/token-budget.html#claude-code" title="Stay inside the input-token budget: 0/8">
+                <b>0%</b>
+                <small>-100 pp</small>
+              </a>
+              
+            </td>
+            
+          </tr>
+          
+          <tr>
+            <td class="version">
+              <strong>Codex CLI</strong>
+              <em>0.63.0-fixture · baseline</em>
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/approval-policy-untrusted.html#codex" title="Record approval_policy untrusted: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/cache-hit-rate.html#codex" title="Keep the prompt cache hit rate: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/diff-scope.html#codex" title="Touch only the requested file: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/edit-not-bash-rewrite.html#codex" title="Do not rewrite files from bash: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/nested-instruction.html#codex" title="Honor the nested instruction file: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/no-sed-edits.html#codex" title="Edit files with the edit tool, not sed: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/no-verbose-comments.html#codex" title="Do not add verbose comments: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/permission-prompt-budget.html#codex" title="Stay within the permission-prompt budget: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/read-agents-md.html#codex" title="Read AGENTS.md before editing: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/reply-in-chinese.html#codex" title="Reply in Chinese: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/reply-in-english.html#codex" title="Reply in English: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/token-budget.html#codex" title="Stay inside the input-token budget: 8/8">
+                <b>100%</b>
+                <small>8/8</small>
+              </a>
+              
+            </td>
+            
+          </tr>
+          
+          <tr>
+            <td class="version">
+              <strong>Codex CLI</strong>
+              <em>0.71.0-fixture · candidate</em>
+            </td>
+            
+            <td>
+              
+              <a class="cell storm" href="scenarios/approval-policy-untrusted.html#codex" title="Record approval_policy untrusted: 2/8">
+                <b>25%</b>
+                <small>-75 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/cache-hit-rate.html#codex" title="Keep the prompt cache hit rate: 8/8">
+                <b>100%</b>
+                <small>+0 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/diff-scope.html#codex" title="Touch only the requested file: 8/8">
+                <b>100%</b>
+                <small>+0 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/edit-not-bash-rewrite.html#codex" title="Do not rewrite files from bash: 8/8">
+                <b>100%</b>
+                <small>+0 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/nested-instruction.html#codex" title="Honor the nested instruction file: 8/8">
+                <b>100%</b>
+                <small>+0 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell watch" href="scenarios/no-sed-edits.html#codex" title="Edit files with the edit tool, not sed: 7/8">
+                <b>88%</b>
+                <small>-12 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/no-verbose-comments.html#codex" title="Do not add verbose comments: 8/8">
+                <b>100%</b>
+                <small>+0 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/permission-prompt-budget.html#codex" title="Stay within the permission-prompt budget: 8/8">
+                <b>100%</b>
+                <small>+0 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell watch" href="scenarios/read-agents-md.html#codex" title="Read AGENTS.md before editing: 7/8">
+                <b>88%</b>
+                <small>-12 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/reply-in-chinese.html#codex" title="Reply in Chinese: 8/8">
+                <b>100%</b>
+                <small>+0 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/reply-in-english.html#codex" title="Reply in English: 8/8">
+                <b>100%</b>
+                <small>+0 pp</small>
+              </a>
+              
+            </td>
+            
+            <td>
+              
+              <a class="cell clear" href="scenarios/token-budget.html#codex" title="Stay inside the input-token budget: 8/8">
+                <b>100%</b>
+                <small>+0 pp</small>
+              </a>
+              
+            </td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    <section class="catalog">
+      
+      <a href="scenarios/approval-policy-untrusted.html">
+        <div class="cat">permission</div>
+        <strong>Record approval_policy untrusted</strong>
+      </a>
+      
+      <a href="scenarios/cache-hit-rate.html">
+        <div class="cat">cost</div>
+        <strong>Keep the prompt cache hit rate</strong>
+      </a>
+      
+      <a href="scenarios/diff-scope.html">
+        <div class="cat">diff</div>
+        <strong>Touch only the requested file</strong>
+      </a>
+      
+      <a href="scenarios/edit-not-bash-rewrite.html">
+        <div class="cat">tool</div>
+        <strong>Do not rewrite files from bash</strong>
+      </a>
+      
+      <a href="scenarios/nested-instruction.html">
+        <div class="cat">instruction</div>
+        <strong>Honor the nested instruction file</strong>
+      </a>
+      
+      <a href="scenarios/no-sed-edits.html">
+        <div class="cat">tool</div>
+        <strong>Edit files with the edit tool, not sed</strong>
+      </a>
+      
+      <a href="scenarios/no-verbose-comments.html">
+        <div class="cat">instruction</div>
+        <strong>Do not add verbose comments</strong>
+      </a>
+      
+      <a href="scenarios/permission-prompt-budget.html">
+        <div class="cat">permission</div>
+        <strong>Stay within the permission-prompt budget</strong>
+      </a>
+      
+      <a href="scenarios/read-agents-md.html">
+        <div class="cat">instruction</div>
+        <strong>Read AGENTS.md before editing</strong>
+      </a>
+      
+      <a href="scenarios/reply-in-chinese.html">
+        <div class="cat">language</div>
+        <strong>Reply in Chinese</strong>
+      </a>
+      
+      <a href="scenarios/reply-in-english.html">
+        <div class="cat">language</div>
+        <strong>Reply in English</strong>
+      </a>
+      
+      <a href="scenarios/token-budget.html">
+        <div class="cat">cost</div>
+        <strong>Stay inside the input-token budget</strong>
+      </a>
+      
+    </section>
+    <p class="tos">These rows are synthetic recorded trajectories shaped like Claude Code session JSONL and Codex rollout JSONL. They are not measurements of a live vendor binary. A real run is optional: <code>harnesswatch run</code> refuses to start unless <code>ANTHROPIC_API_KEY</code> or <code>CODEX_API_KEY</code> is set, and it does not use a consumer subscription.</p>
+    <footer>Dataset: fixtures/recordings synthetic JSONL (fixtures/behaviors.yaml labels). Bootstrap resamples: 4000, seed 0. Publish this folder with GitHub Pages (branch <code>main</code>, folder <code>/docs</code>).</footer>
+  </main>
+</body>
+</html>

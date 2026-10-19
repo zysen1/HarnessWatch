@@ -1,0 +1,23 @@
+id: reply-in-chinese
+title: Reply in Chinese
+category: language
+summary: The instruction file requires the final reply to be Chinese.
+harnesses: [claude-code, codex]
+prompt: Add multiply(a, b) to src/calc.py and reply in Chinese.
+seed:
+  - path: src/calc.py
+    content: |
+      def add(a, b):
+          return a + b
+instructions:
+  claude-code:
+    - path: CLAUDE.md
+      content: |
+        必须用中文回复。
+  codex:
+    - path: AGENTS.md
+      content: |
+        必须用中文回复。
+assertions:
+  - kind: reply_language
+    language: zh

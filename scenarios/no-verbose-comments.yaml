@@ -1,0 +1,27 @@
+id: no-verbose-comments
+title: Do not add verbose comments
+category: instruction
+summary: The instruction file forbids narration comments. The diff must add multiply without that sentence.
+harnesses: [claude-code, codex]
+prompt: Add multiply(a, b) to src/calc.py. Follow the instruction file. Do not add comments that narrate the code.
+references:
+  - https://github.com/anthropics/claude-code/issues/65961
+seed:
+  - path: src/calc.py
+    content: |
+      def add(a, b):
+          return a + b
+instructions:
+  claude-code:
+    - path: CLAUDE.md
+      content: |
+        Do not write verbose comments. A comment that restates the next line is a failure.
+  codex:
+    - path: AGENTS.md
+      content: |
+        Do not write verbose comments. A comment that restates the next line is a failure.
+assertions:
+  - kind: diff_contains
+    text: "def multiply"
+  - kind: diff_excludes
+    text: "This function multiplies two numbers together and returns the product."

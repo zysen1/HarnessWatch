@@ -1,0 +1,6 @@
+{"timestamp": "2026-10-19T00:00:00Z", "type": "session_meta", "payload": {"id": "co-no-verbose-comments-01", "cwd": "/tmp/harnesswatch/repo", "cli_version": "0.63.0-fixture", "originator": "codex", "model_provider": "openai", "source": "exec"}}
+{"timestamp": "2026-10-19T00:00:00Z", "type": "turn_context", "payload": {"model": "gpt-5-codex-fixture", "approval_policy": "on-request", "sandbox_policy": "workspace-write", "cwd": "/tmp/harnesswatch/repo"}}
+{"timestamp": "2026-10-19T00:00:00Z", "type": "response_item", "payload": {"type": "message", "role": "user", "content": [{"type": "input_text", "text": "scenario prompt"}]}}
+{"timestamp": "2026-10-19T00:00:00Z", "type": "response_item", "payload": {"type": "custom_tool_call", "call_id": "call_co-no-verbose-comments-01_0", "name": "apply_patch", "input": "*** Begin Patch\n*** Update File: src/calc.py\n@@\n-return a + b\n+return a * b\n*** End Patch"}}
+{"timestamp": "2026-10-19T00:00:00Z", "type": "response_item", "payload": {"type": "message", "role": "assistant", "content": [{"type": "output_text", "text": "Added multiply to src/calc.py without a verbose comment."}]}}
+{"timestamp": "2026-10-19T00:00:00Z", "type": "event_msg", "payload": {"type": "token_count", "info": {"total_token_usage": {"input_tokens": 8037, "cached_input_tokens": 24013, "output_tokens": 163, "reasoning_output_tokens": 21}}}}
