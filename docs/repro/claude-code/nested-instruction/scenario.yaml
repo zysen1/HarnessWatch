@@ -1,0 +1,38 @@
+id: nested-instruction
+title: Honor the nested instruction file
+category: instruction
+summary: A nested CLAUDE.md or AGENTS.md inside pkg/ must be read, not only the repo root file.
+harnesses: [claude-code, codex]
+prompt: Add slugify(text) to pkg/util.py. Follow the nested instruction file in pkg/.
+references:
+  - https://github.com/anthropics/claude-code/issues/90450
+seed:
+  - path: pkg/util.py
+    content: |
+      def ping():
+          return "pong"
+  - path: README.md
+    content: |
+      # Tiny calc
+instructions:
+  claude-code:
+    - path: CLAUDE.md
+      content: |
+        Package rules live in pkg/CLAUDE.md. Read that file before editing pkg/.
+    - path: pkg/CLAUDE.md
+      content: |
+        Functions in this package use a one-line docstring and snake_case.
+  codex:
+    - path: AGENTS.md
+      content: |
+        Package rules live in pkg/AGENTS.md. Read that file before editing pkg/.
+    - path: pkg/AGENTS.md
+      content: |
+        Functions in this package use a one-line docstring and snake_case.
+assertions:
+  - kind: read_file
+    path: pkg/CLAUDE.md
+    harnesses: [claude-code]
+  - kind: read_file
+    path: pkg/AGENTS.md
+    harnesses: [codex]

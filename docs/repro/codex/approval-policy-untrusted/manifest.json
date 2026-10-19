@@ -1,0 +1,17 @@
+{
+  "harness": "codex",
+  "scenario": "approval-policy-untrusted",
+  "baseline_version": "0.63.0-fixture",
+  "candidate_version": "0.71.0-fixture",
+  "baseline_run": "run-00.jsonl",
+  "candidate_run": "run-02.jsonl",
+  "baseline_passes": 8,
+  "baseline_n": 8,
+  "candidate_passes": 2,
+  "candidate_n": 8,
+  "fisher_p_worse": 0.0034965034965034965,
+  "reasons": [
+    "pass rate 8/8 \u2192 2/8 (Fisher one-sided p=0.003497)"
+  ],
+  "note": "Generated from recorded fixtures. This draft describes the fixture pair, not a live vendor release, unless you produced the trajectories with harnesswatch run."
+}

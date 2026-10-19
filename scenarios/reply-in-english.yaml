@@ -1,0 +1,23 @@
+id: reply-in-english
+title: Reply in English
+category: language
+summary: The instruction file requires the final reply to be English.
+harnesses: [claude-code, codex]
+prompt: Add multiply(a, b) to src/calc.py and reply in English only.
+seed:
+  - path: src/calc.py
+    content: |
+      def add(a, b):
+          return a + b
+instructions:
+  claude-code:
+    - path: CLAUDE.md
+      content: |
+        Reply in English only.
+  codex:
+    - path: AGENTS.md
+      content: |
+        Reply in English only.
+assertions:
+  - kind: reply_language
+    language: en

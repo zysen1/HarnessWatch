@@ -1,0 +1,30 @@
+id: token-budget
+title: Stay inside the input-token budget
+category: cost
+summary: Input tokens, including a cache-creation spike, should stay near the baseline. A jump past the budget fails.
+harnesses: [claude-code, codex]
+prompt: Add multiply(a, b) to src/calc.py.
+references:
+  - https://github.com/anthropics/claude-code/issues/46917
+seed:
+  - path: src/calc.py
+    content: |
+      def add(a, b):
+          return a + b
+instructions:
+  claude-code:
+    - path: CLAUDE.md
+      content: |
+        Make the small edit and stop.
+  codex:
+    - path: AGENTS.md
+      content: |
+        Make the small edit and stop.
+assertions:
+  - kind: input_tokens_max
+    max: 15000
+watch_metrics:
+  - name: input_tokens
+    direction: lower_is_better
+  - name: cache_creation_tokens
+    direction: lower_is_better

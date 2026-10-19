@@ -1,0 +1,130 @@
+# Labels for the synthetic fixture bulletin.
+# candidate_pattern is one character per run: P pass, F fail. Baseline runs all pass.
+# These trajectories are fabricated in the documented JSONL shapes. They are not
+# captures from a vendor binary.
+k: 8
+alpha: 0.05
+bootstrap_resamples: 4000
+versions:
+  claude-code:
+    baseline: 2.1.70-fixture
+    candidate: 2.1.88-fixture
+  codex:
+    baseline: 0.63.0-fixture
+    candidate: 0.71.0-fixture
+comparisons:
+  - harness: claude-code
+    scenario: read-agents-md
+    label: regression
+    candidate_pattern: PFFPFFPF
+    note: Candidate skips AGENTS.md on 5 of 8 runs.
+  - harness: claude-code
+    scenario: nested-instruction
+    label: regression
+    candidate_pattern: FFFFFFFF
+    note: Candidate never reads the nested CLAUDE.md.
+  - harness: claude-code
+    scenario: no-verbose-comments
+    label: regression
+    candidate_pattern: PFFFFFFF
+    note: Candidate adds a narration comment on 7 of 8 runs.
+  - harness: claude-code
+    scenario: no-sed-edits
+    label: regression
+    candidate_pattern: PPFFFFFF
+    note: Candidate edits with sed on 6 of 8 runs.
+  - harness: claude-code
+    scenario: edit-not-bash-rewrite
+    label: regression
+    candidate_pattern: FFFFFFFF
+    note: Candidate rewrites the file with a bash heredoc.
+  - harness: claude-code
+    scenario: reply-in-chinese
+    label: regression
+    candidate_pattern: PFFFFFFF
+    note: Candidate replies in English on 7 of 8 runs.
+  - harness: claude-code
+    scenario: reply-in-english
+    label: stable
+    candidate_pattern: PPPPPPPP
+    note: Both versions reply in English.
+  - harness: claude-code
+    scenario: permission-prompt-budget
+    label: regression
+    candidate_pattern: FFFFFFFP
+    note: Candidate raises several permission prompts.
+  - harness: claude-code
+    scenario: cache-hit-rate
+    label: regression
+    candidate_pattern: FFFFFFFF
+    note: Candidate cache hit rate collapses.
+  - harness: claude-code
+    scenario: token-budget
+    label: regression
+    candidate_pattern: FFFFFFFF
+    note: Candidate input tokens and cache_creation jump.
+  - harness: claude-code
+    scenario: diff-scope
+    label: stable
+    candidate_pattern: PPPPPPPF
+    note: One candidate run touches an extra file. That single flake is not significant at k=8.
+  - harness: codex
+    scenario: read-agents-md
+    label: stable
+    candidate_pattern: PPPPPPPF
+    note: One candidate run skips AGENTS.md.
+  - harness: codex
+    scenario: nested-instruction
+    label: stable
+    candidate_pattern: PPPPPPPP
+    note: Both versions read pkg/AGENTS.md.
+  - harness: codex
+    scenario: no-verbose-comments
+    label: stable
+    candidate_pattern: PPPPPPPP
+    note: Both versions keep the diff free of narration comments.
+  - harness: codex
+    scenario: no-sed-edits
+    label: stable
+    candidate_pattern: PPPPPPPF
+    note: One candidate run uses sed.
+  - harness: codex
+    scenario: edit-not-bash-rewrite
+    label: stable
+    candidate_pattern: PPPPPPPP
+    note: Both versions use apply_patch.
+  - harness: codex
+    scenario: reply-in-chinese
+    label: stable
+    candidate_pattern: PPPPPPPP
+    note: Both versions reply in Chinese.
+  - harness: codex
+    scenario: reply-in-english
+    label: stable
+    candidate_pattern: PPPPPPPP
+    note: Both versions reply in English.
+  - harness: codex
+    scenario: permission-prompt-budget
+    label: stable
+    candidate_pattern: PPPPPPPP
+    note: Neither version raises permission prompts.
+  - harness: codex
+    scenario: approval-policy-untrusted
+    label: regression
+    candidate_pattern: PPFFFFFF
+    note: Candidate sessions record on-request instead of untrusted.
+  - harness: codex
+    scenario: cache-hit-rate
+    label: stable
+    candidate_pattern: PPPPPPPP
+    note: Cache hit rate stays in the same band.
+  - harness: codex
+    scenario: token-budget
+    label: stable
+    candidate_pattern: PPPPPPPP
+    note: Input tokens stay in the same band.
+  - harness: codex
+    scenario: diff-scope
+    label: stable
+    candidate_pattern: PPPPPPPP
+    note: Both versions touch only src/calc.py.

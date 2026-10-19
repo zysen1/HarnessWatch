@@ -1,0 +1,28 @@
+id: cache-hit-rate
+title: Keep the prompt cache hit rate
+category: cost
+summary: Cache reads should still cover a large share of prompt tokens. A collapse in hit rate is a cost regression.
+harnesses: [claude-code, codex]
+prompt: Add multiply(a, b) to src/calc.py.
+references:
+  - https://news.ycombinator.com/item?id=49733726
+seed:
+  - path: src/calc.py
+    content: |
+      def add(a, b):
+          return a + b
+instructions:
+  claude-code:
+    - path: CLAUDE.md
+      content: |
+        Make the small edit and stop.
+  codex:
+    - path: AGENTS.md
+      content: |
+        Make the small edit and stop.
+assertions:
+  - kind: cache_hit_min
+    min: 0.4
+watch_metrics:
+  - name: cache_hit_rate
+    direction: higher_is_better

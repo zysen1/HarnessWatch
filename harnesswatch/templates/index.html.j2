@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HarnessWatch — behavioral weather report</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="mast">
+    <div>
+      <p class="station">Station HW · {{ bulletin }}</p>
+      <h1>What changed<br>after the upgrade?</h1>
+    </div>
+    <p class="dek">A behavioral forecast for coding-agent CLIs. Each cell is the share of k repeated runs that still obeyed the scenario. Storm means the candidate version moved, and the move is larger than sampling noise.</p>
+  </header>
+  <main class="wrap">
+    <section class="strip">
+      <div class="stat">
+        <b>{{ measurement.regressions_detected }}/{{ measurement.regressions_total }}</b>
+        <span>injected regressions detected on the fixture set</span>
+      </div>
+      <div class="stat">
+        <b>{{ measurement.false_positives }}/{{ measurement.stable_total }}</b>
+        <span>false positives on stable controls</span>
+      </div>
+      <div class="stat">
+        <b>k={{ measurement.k }}</b>
+        <span>runs per cell · Fisher α={{ measurement.alpha }}</span>
+      </div>
+      <div class="stat">
+        <b>offline</b>
+        <span>no CLI and no API key were used to build this page</span>
+      </div>
+    </section>
+    <p class="legend">
+      <span><i class="swatch clear"></i>Clear</span>
+      <span><i class="swatch watch"></i>Watch · dip, not significant</span>
+      <span><i class="swatch storm"></i>Storm · significant regression</span>
+      <span><i class="swatch na"></i>No scenario</span>
+    </p>
+    <div class="board">
+      <table>
+        <thead>
+          <tr>
+            <th>Version</th>
+            {% for column in columns %}
+            <th class="scenario" title="{{ column.title }}">{{ column.id }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+          <tr>
+            <td class="version">
+              <strong>{{ row.harness }}</strong>
+              <em>{{ row.version }} · {{ row.role }}</em>
+            </td>
+            {% for cell in row.cells %}
+            <td>
+              {% if cell.href %}
+              <a class="cell {{ cell.status }}" href="{{ cell.href }}" title="{{ cell.title }}">
+                <b>{{ cell.label }}</b>
+                <small>{{ cell.sub }}</small>
+              </a>
+              {% else %}
+              <div class="cell na" title="{{ cell.title }}"><b>{{ cell.label }}</b><small>{{ cell.sub }}</small></div>
+              {% endif %}
+            </td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <section class="catalog">
+      {% for column in columns %}
+      <a href="scenarios/{{ column.id }}.html">
+        <div class="cat">{{ column.category }}</div>
+        <strong>{{ column.title }}</strong>
+      </a>
+      {% endfor %}
+    </section>
+    <p class="tos">These rows are synthetic recorded trajectories shaped like Claude Code session JSONL and Codex rollout JSONL. They are not measurements of a live vendor binary. A real run is optional: <code>harnesswatch run</code> refuses to start unless <code>ANTHROPIC_API_KEY</code> or <code>CODEX_API_KEY</code> is set, and it does not use a consumer subscription.</p>
+    <footer>Dataset: {{ measurement.dataset }}. Bootstrap resamples: {{ measurement.bootstrap_resamples }}, seed 0. Publish this folder with GitHub Pages (branch <code>main</code>, folder <code>/docs</code>).</footer>
+  </main>
+</body>
+</html>

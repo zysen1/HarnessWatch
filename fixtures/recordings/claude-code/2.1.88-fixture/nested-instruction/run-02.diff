@@ -1,0 +1,11 @@
+diff --git a/pkg/util.py b/pkg/util.py
+index 5555555..6666666 100644
+--- a/pkg/util.py
++++ b/pkg/util.py
+@@ -1,2 +1,5 @@
+ def ping():
+     return "pong"
++
++def slugify(text):
++    """Return a lowercase slug."""
++    return text.strip().lower().replace(" ", "-")

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Touch only the requested file — HarnessWatch</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="mast">
+    <div>
+      <p class="station"><a class="back" href="../index.html">← Bulletin</a></p>
+      <h1>Touch only the requested file</h1>
+    </div>
+    <p class="dek">The final diff adds multiply and does not edit any other path.</p>
+  </header>
+  <main class="wrap">
+    <p><span class="mono">diff</span> · prompt: Add multiply(a, b) to src/calc.py. Do not edit any other file.</p>
+    
+    
+    <section id="claude-code">
+      <h2>Claude Code</h2>
+      <p>
+        2.1.70-fixture 8/8
+        → 2.1.88-fixture 7/8
+        · Fisher one-sided p=0.5
+        · no significant regression
+      </p>
+      
+      <div class="pair">
+        <article class="pane">
+          <h3>Baseline · run 00</h3>
+          <p class="mono">pass=True</p>
+          <ol class="steps">
+            
+            <li><strong>Edit</strong> <span class="mono">src/calc.py</span></li>
+            
+          </ol>
+          <div class="reply">Added multiply to src/calc.py without a verbose comment.</div>
+        </article>
+        <article class="pane ">
+          <h3>Candidate · run 00</h3>
+          <p class="mono">pass=True</p>
+          <ol class="steps">
+            
+            <li><strong>Edit</strong> <span class="mono">src/calc.py</span></li>
+            
+          </ol>
+          <div class="reply">Added multiply to src/calc.py without a verbose comment.</div>
+        </article>
+      </div>
+      
+    </section>
+    
+    <section id="codex">
+      <h2>Codex CLI</h2>
+      <p>
+        0.63.0-fixture 8/8
+        → 0.71.0-fixture 8/8
+        · Fisher one-sided p=1
+        · no significant regression
+      </p>
+      
+      <div class="pair">
+        <article class="pane">
+          <h3>Baseline · run 00</h3>
+          <p class="mono">pass=True</p>
+          <ol class="steps">
+            
+            <li><strong>ApplyPatch</strong> <span class="mono">*** Begin Patch *** Update File: src/calc.py @@ -return a + b +return a * b *** End Patch</span></li>
+            
+          </ol>
+          <div class="reply">Added multiply to src/calc.py without a verbose comment.</div>
+        </article>
+        <article class="pane ">
+          <h3>Candidate · run 00</h3>
+          <p class="mono">pass=True</p>
+          <ol class="steps">
+            
+            <li><strong>ApplyPatch</strong> <span class="mono">*** Begin Patch *** Update File: src/calc.py @@ -return a + b +return a * b *** End Patch</span></li>
+            
+          </ol>
+          <div class="reply">Added multiply to src/calc.py without a verbose comment.</div>
+        </article>
+      </div>
+      
+    </section>
+    
+    <p class="tos">Side-by-side runs are the recorded fixtures for this scenario. Copying the draft does not file an issue.</p>
+  </main>
+  <script>
+    function copyDraft(id) {
+      var node = document.getElementById(id);
+      var text = node.value;
+      var button = document.querySelector('[data-for="' + id + '"]');
+      function done(label) {
+        if (button) button.textContent = label;
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done("Copied"); }, function () {
+          node.focus();
+          node.select();
+          done("Selected — press Ctrl+C");
+        });
+      } else {
+        node.focus();
+        node.select();
+        done("Selected — press Ctrl+C");
+      }
+    }
+  </script>
+</body>
+</html>

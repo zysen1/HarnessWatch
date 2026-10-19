@@ -1,0 +1,12 @@
+HarnessWatch
+Copyright 2026 HarnessWatch contributors
+
+Licensed under the Apache License, Version 2.0. See the LICENSE file.
+
+This repository is original work. Fisher's exact test and the percentile
+bootstrap are standard statistical procedures, implemented here from their
+published definitions. No third-party statistical source code is copied.
+
+Claude Code and Codex session shapes are parsed from publicly documented
+JSONL layouts. HarnessWatch does not include Anthropic or OpenAI source code,
+and those names are used only to identify the CLIs under test.
